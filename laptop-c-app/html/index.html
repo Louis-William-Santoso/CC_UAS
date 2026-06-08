@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server C</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 3rem 4rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        .badge {
+            display: inline-block;
+            background: #4CAF50;
+            padding: 0.3rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .info { margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Server C</h1>
+        <p>Layanan dari Laptop C</p>
+        <div class="badge">ONLINE</div>
+        <div class="info">Hostname: <span id="hostname">-</span></div>
+    </div>
+    <script>document.getElementById('hostname').textContent = location.hostname;</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="qcRadiSM-p5JdbbKVqyV">
+    <mxGraphModel dx="1372" dy="748" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-7" edge="1" parent="1" source="gsFw4TOZx2eK0HFT8ACa-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="gsFw4TOZx2eK0HFT8ACa-8" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" value="Internet" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-13" edge="1" parent="1" source="gsFw4TOZx2eK0HFT8ACa-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="gsFw4TOZx2eK0HFT8ACa-12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-8" parent="1" style="whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;rounded=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" value="&lt;b&gt;LAPTOP A&lt;/b&gt;&lt;div&gt;&lt;b&gt;(Gateway)&lt;br&gt;&lt;/b&gt;&lt;div style=&quot;text-align: left;&quot;&gt;+ Nginx Load Balancer&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;+ Phrometeus/Grafana&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="180" x="330" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-14" edge="1" parent="1" source="gsFw4TOZx2eK0HFT8ACa-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="gsFw4TOZx2eK0HFT8ACa-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="480" />
+            </Array>
+            <mxPoint x="180" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-17" edge="1" parent="1" source="gsFw4TOZx2eK0HFT8ACa-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="gsFw4TOZx2eK0HFT8ACa-16">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-12" parent="1" style="rhombus;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;rounded=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" value="&amp;nbsp;[Network: Tailscale/LAN]" vertex="1">
+          <mxGeometry height="80" width="280" x="280" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" value="&lt;b&gt;LAPTOP B&lt;/b&gt;&lt;div&gt;App container1&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="140" x="170" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="gsFw4TOZx2eK0HFT8ACa-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;JetBrains Mono&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=JetBrains+Mono&quot;&gt;&lt;b&gt;LAPTOP C&lt;/b&gt;&lt;/font&gt;&lt;div&gt;&lt;font face=&quot;JetBrains Mono&quot;&gt;App container2&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="140" x="560" y="550" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
