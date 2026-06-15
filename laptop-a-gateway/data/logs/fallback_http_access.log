@@ -14,3 +14,5 @@
 [14/Jun/2026:10:55:31 +0000] 404 - GET http 192.168.1.9 "/laptopc" [Client 192.168.1.26] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Mobile Safari/537.36" "-"
 [15/Jun/2026:07:56:21 +0000] 200 - GET http localhost "/" [Client 172.19.0.1] [Length 568] [Gzip 1.86] "Mozilla/5.0 (X11; Linux x86_64; rv:151.0) Gecko/20100101 Firefox/151.0" "-"
 [15/Jun/2026:07:56:21 +0000] 400 - GET http localhost "/favicon.ico" [Client 127.0.0.1] [Length 230] [Gzip -] "-" "-"
+[15/Jun/2026:14:50:33 +0000] 200 - GET http localhost "/" [Client 172.20.0.1] [Length 568] [Gzip 1.86] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36" "-"
+[15/Jun/2026:14:52:15 +0000] 400 - GET http localhost "/favicon.ico" [Client 127.0.0.1] [Length 230] [Gzip -] "-" "-"

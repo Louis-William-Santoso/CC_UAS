@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server C</title>
+    <title>Server C - FaaS</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -22,17 +22,60 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            min-width: 400px;
         }
-        h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+        h1 { font-size: 3rem; margin-bottom: 0.3rem; }
         .badge {
             display: inline-block;
             background: #4CAF50;
             padding: 0.3rem 1.2rem;
             border-radius: 20px;
             font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .info { margin: 1rem 0 2rem; font-size: 0.85rem; opacity: 0.8; }
+        .faas-section {
+            background: rgba(0,0,0,0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
             margin-top: 1rem;
         }
-        .info { margin-top: 1.5rem; font-size: 0.85rem; opacity: 0.8; }
+        .faas-section h3 { margin-bottom: 1rem; font-size: 1.1rem; }
+        .faas-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .faas-form input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        .faas-form button {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            background: #f5576c;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .faas-form button:hover { background: #d94a5c; }
+        .faas-form button:disabled { background: #666; cursor: not-allowed; }
+        #faas-response {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 0.8rem;
+            font-size: 0.85rem;
+            min-height: 40px;
+            text-align: left;
+            word-break: break-word;
+            font-family: monospace;
+        }
+        .loading { opacity: 0.6; }
     </style>
 </head>
 <body>
@@ -41,7 +84,47 @@
         <p>Layanan dari Laptop C</p>
         <div class="badge">ONLINE</div>
         <div class="info">Hostname: <span id="hostname">-</span></div>
+
+        <div class="faas-section">
+            <h3>☁️ FaaS Integration (GCP Cloud Functions)</h3>
+            <div class="faas-form">
+                <input type="text" id="filename" placeholder="Nama file (e.g. image.jpg)" value="image.jpg">
+                <button id="call-faas" onclick="callFaaS()">Panggil FaaS</button>
+            </div>
+            <div id="faas-response">Response akan muncul di sini...</div>
+        </div>
     </div>
-    <script>document.getElementById('hostname').textContent = location.hostname;</script>
+
+    <script>
+        document.getElementById('hostname').textContent = location.hostname;
+
+        async function callFaaS() {
+            const btn = document.getElementById('call-faas');
+            const resp = document.getElementById('faas-response');
+            const file = document.getElementById('filename').value || 'unknown';
+
+            btn.disabled = true;
+            btn.textContent = 'Memproses...';
+            resp.textContent = '⏳ Mengirim request ke FaaS...';
+            resp.className = 'loading';
+
+            try {
+                const res = await fetch('http://tes.com/api/faas', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ bucket: 'tes', file: file })
+                });
+                const text = await res.text();
+                resp.textContent = `✅ Response (${res.status}): ${text}`;
+                resp.className = '';
+            } catch (err) {
+                resp.textContent = `❌ Error: ${err.message}`;
+                resp.className = '';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Panggil FaaS';
+            }
+        }
+    </script>
 </body>
 </html>

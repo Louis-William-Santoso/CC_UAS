@@ -1,0 +1,2 @@
+2026/06/15 15:58:20 [error] 275#275: *14386 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.9, server: faas.tes.com, request: "GET / HTTP/1.1", upstream: "http://192.168.1.9:8001/", host: "faas.tes.com"
+2026/06/15 15:58:20 [error] 275#275: *14386 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.9, server: faas.tes.com, request: "GET /favicon.ico HTTP/1.1", upstream: "http://192.168.1.9:8001/favicon.ico", host: "faas.tes.com", referrer: "http://faas.tes.com/"
