@@ -1,2 +1,4 @@
 laptop-a-gateway/gcp-functions
 laptop-a-gateway/__pycache__
+laptop-a-gateway/data/cache/*
+laptop-a-gateway/grafana-data/*
