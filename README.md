@@ -1,5 +1,8 @@
 # Cloud Computing
 
+> [!WARNING]
+> Ganti IP host di docker-compose,nginx, dnsmasq.conf. WAJIB!
+
 ## Laptop A / Gateway
 
 ### 1. Setup MinIO
