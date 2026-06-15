@@ -7,5 +7,5 @@ scrape_configs:
       - targets:
           - 'node-exporter:9100'
           # Tambahin ini kalo Laptop B & C juga jalanin node-exporter:
-          # - '192.168.1.B:9100'
+          - '192.168.1.9:9200'
           # - '192.168.1.C:9100'

@@ -28,7 +28,7 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin123
     volumes:
-      - grafana-data:/var/lib/grafana
+      - ./grafana-data:/var/lib/grafana
 
   node-exporter:
     image: prom/node-exporter:latest
@@ -36,5 +36,13 @@ services:
     ports:
       - '9100:9100'
 
-volumes:
-  grafana-data:
+  dns:
+    restart: always
+    image: strm/dnsmasq
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    ports:
+      - "192.168.1.9:53:53/udp"
+      - "192.168.1.9:53:53/tcp"
+    cap_add:
+      - NET_ADMIN
