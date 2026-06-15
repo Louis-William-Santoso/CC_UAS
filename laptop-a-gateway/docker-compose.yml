@@ -42,7 +42,21 @@ services:
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf
     ports:
-      - "192.168.1.9:53:53/udp"
-      - "192.168.1.9:53:53/tcp"
+      - "10.133.57.156:53:53/udp"
+      - "10.133.57.156:53:53/tcp"
     cap_add:
       - NET_ADMIN
+
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: admin123
+      MINIO_SERVER_URL: http://minio.tes.com:9000
+    volumes:
+      - ./minio-data:/data
+    command: server /data --console-address :9001
