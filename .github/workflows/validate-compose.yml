@@ -1,0 +1,88 @@
+name: Validate and Deploy Docker Compose
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  # JOB 1: VALIDASI (berjalan di server GitHub)
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Validate Laptop A - Gateway
+        run: |
+          if [ -f "laptop-a-gateway/docker-compose.yml" ]; then
+            docker compose -f laptop-a-gateway/docker-compose.yml config --quiet
+            echo "Laptop A Gateway Docker Compose is valid."
+          else
+            echo "Laptop A Gateway Docker Compose file not found, skipping."
+          fi
+
+      - name: Validate Laptop B - App
+        run: |
+          if [ -f "laptop-b-app/docker-compose.yml" ]; then
+            docker compose -f laptop-b-app/docker-compose.yml config --quiet
+            echo "Laptop B App Docker Compose is valid."
+          else
+            echo "Laptop B App Docker Compose file not found, skipping."
+          fi
+
+      - name: Validate Laptop C - App
+        run: |
+          if [ -f "laptop-c-app/docker-compose.yml" ]; then
+            docker compose -f laptop-c-app/docker-compose.yml config --quiet
+            echo "Laptop C App Docker Compose is valid."
+          else
+            echo "Laptop C App Docker Compose file not found, skipping."
+          fi
+
+  # JOB 2: AUTO-DEPLOY (berjalan di laptop kita)
+  deploy:
+    needs: validate
+    if: github.event_name == 'push'
+    runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout Latest Code
+        uses: actions/checkout@v4
+
+      - name: Deploy Laptop B - App
+        run: |
+          echo "Deploying Laptop B..."
+          docker compose -f laptop-b-app/docker-compose.yml pull
+          docker compose -f laptop-b-app/docker-compose.yml up -d
+          echo "Laptop B deployed successfully!"
+
+      - name: Deploy Laptop C - App
+        run: |
+          echo "Deploying Laptop C..."
+          docker compose -f laptop-c-app/docker-compose.yml pull
+          docker compose -f laptop-c-app/docker-compose.yml up -d
+          echo "Laptop C deployed successfully!"
+
+      - name: Verify Running Containers
+        run: docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+      - name: Test Laptop B Website (port 8000)
+        run: |
+          echo "Testing Laptop B website..."
+          sleep 5
+          curl -sI http://localhost:8000 | head -n 10
+          echo "--- Laptop B HTML Content ---"
+          curl -s http://localhost:8000 | head -n 10
+
+      - name: Test Laptop C Website (port 8080)
+        run: |
+          echo "Testing Laptop C website..."
+          curl -sI http://localhost:8080 | head -n 10
+          echo "--- Laptop C HTML Content ---"
+          curl -s http://localhost:8080 | head -n 10
